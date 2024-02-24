@@ -16,16 +16,33 @@ import bg13 from "@/assets/bg13.svg";
 import bg14 from "@/assets/bg14.svg";
 import bg15 from "@/assets/bg15.svg";
 import { useState } from "react";
+import axios from "axios";
+import { Button } from "@/components/ui/button";
 
 function BackgroundImages() {
-  const [selectedImageIndex1, setSelectedImageIndex1] = useState<number | null>(
-    null,
-  );
+  const [selectedID, setSelectedID] = useState<number | null>(null);
   const handleImageClick = (index: number) => {
-    if (selectedImageIndex1 === index) {
-      setSelectedImageIndex1(null);
-    } else if (selectedImageIndex1 != index) {
-      setSelectedImageIndex1(index);
+    if (selectedID === index) {
+      setSelectedID(null);
+    } else if (selectedID != index) {
+      setSelectedID(index);
+    }
+  };
+
+  // const handleSubmit = () => {
+  //   try {
+  //     axios.post("link", { product: selectedID });
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
+
+  const handleSubmit = () => {
+    if (selectedID !== null) {
+      alert("Submitted");
+      console.log("Selected Product ID: ", selectedID);
+    } else {
+      alert("NULL VALUE SUBMITTED");
     }
   };
   return (
@@ -46,7 +63,7 @@ function BackgroundImages() {
               src={bg1}
               alt="bg1"
               className={
-                selectedImageIndex1 === 1
+                selectedID === 1
                   ? "rounded-xl border-[3px] border-primary hover:cursor-pointer"
                   : "rounded-xl hover:cursor-pointer"
               }
@@ -56,7 +73,7 @@ function BackgroundImages() {
               src={bg5}
               alt="bg5"
               className={
-                selectedImageIndex1 === 5
+                selectedID === 5
                   ? "rounded-xl border-[3px] border-primary hover:cursor-pointer"
                   : "rounded-xl hover:cursor-pointer"
               }
@@ -66,7 +83,7 @@ function BackgroundImages() {
               src={bg6}
               alt="bg6"
               className={
-                selectedImageIndex1 === 6
+                selectedID === 6
                   ? "rounded-xl border-[3px] border-primary hover:cursor-pointer"
                   : "rounded-xl hover:cursor-pointer"
               }
@@ -78,7 +95,7 @@ function BackgroundImages() {
               src={bg2}
               alt="bg2"
               className={
-                selectedImageIndex1 === 2
+                selectedID === 2
                   ? "rounded-xl border-[3px] border-primary hover:cursor-pointer"
                   : "rounded-xl hover:cursor-pointer"
               }
@@ -88,7 +105,7 @@ function BackgroundImages() {
               src={bg7}
               alt="bg7"
               className={
-                selectedImageIndex1 === 7
+                selectedID === 7
                   ? "rounded-xl border-[3px] border-primary hover:cursor-pointer"
                   : "rounded-xl hover:cursor-pointer"
               }
@@ -98,7 +115,7 @@ function BackgroundImages() {
               src={bg8}
               alt="bg8"
               className={
-                selectedImageIndex1 === 8
+                selectedID === 8
                   ? "rounded-xl border-[3px] border-primary hover:cursor-pointer"
                   : "rounded-xl hover:cursor-pointer"
               }
@@ -108,7 +125,7 @@ function BackgroundImages() {
               src={bg9}
               alt="bg9"
               className={
-                selectedImageIndex1 === 9
+                selectedID === 9
                   ? "rounded-xl border-[3px] border-primary hover:cursor-pointer"
                   : "rounded-xl hover:cursor-pointer"
               }
@@ -120,7 +137,7 @@ function BackgroundImages() {
               src={bg3}
               alt="bg3"
               className={
-                selectedImageIndex1 === 3
+                selectedID === 3
                   ? "rounded-xl border-[3px] border-primary hover:cursor-pointer"
                   : "rounded-xl hover:cursor-pointer"
               }
@@ -130,7 +147,7 @@ function BackgroundImages() {
               src={bg10}
               alt="bg10"
               className={
-                selectedImageIndex1 === 10
+                selectedID === 10
                   ? "rounded-xl border-[3px] border-primary hover:cursor-pointer"
                   : "rounded-xl hover:cursor-pointer"
               }
@@ -140,7 +157,7 @@ function BackgroundImages() {
               src={bg11}
               alt="bg11"
               className={
-                selectedImageIndex1 === 11
+                selectedID === 11
                   ? "rounded-xl border-[3px] border-primary hover:cursor-pointer"
                   : "rounded-xl hover:cursor-pointer"
               }
@@ -151,7 +168,7 @@ function BackgroundImages() {
               src={bg12}
               alt="bg12"
               className={
-                selectedImageIndex1 === 12
+                selectedID === 12
                   ? "rounded-xl border-[3px] border-primary hover:cursor-pointer"
                   : "rounded-xl hover:cursor-pointer"
               }
@@ -163,7 +180,7 @@ function BackgroundImages() {
               src={bg4}
               alt="bg4"
               className={
-                selectedImageIndex1 === 4
+                selectedID === 4
                   ? "rounded-xl border-[3px] border-primary hover:cursor-pointer"
                   : "rounded-xl hover:cursor-pointer"
               }
@@ -173,7 +190,7 @@ function BackgroundImages() {
               src={bg13}
               alt="bg13"
               className={
-                selectedImageIndex1 === 13
+                selectedID === 13
                   ? "rounded-xl border-[3px] border-primary hover:cursor-pointer"
                   : "rounded-xl hover:cursor-pointer"
               }
@@ -183,7 +200,7 @@ function BackgroundImages() {
               src={bg14}
               alt="bg14"
               className={
-                selectedImageIndex1 === 14
+                selectedID === 14
                   ? "rounded-xl border-[3px] border-primary hover:cursor-pointer"
                   : "rounded-xl hover:cursor-pointer"
               }
@@ -193,13 +210,18 @@ function BackgroundImages() {
               src={bg15}
               alt="bg15"
               className={
-                selectedImageIndex1 === 15
+                selectedID === 15
                   ? "rounded-xl border-[3px] border-primary hover:cursor-pointer"
                   : "rounded-xl hover:cursor-pointer"
               }
               onClick={() => handleImageClick(15)}
             />
           </div>
+        </div>
+        <div className="mb-6 flex w-full items-center justify-center pb-6">
+          <Button variant="default" onClick={() => handleSubmit()}>
+            Submit
+          </Button>
         </div>
       </div>
     </>
